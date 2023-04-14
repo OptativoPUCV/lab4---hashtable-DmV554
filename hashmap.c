@@ -48,7 +48,7 @@ void insertMap(HashMap * map, char * key, void * value) {
         return; // Verificar que la tabla no esté llena
     }
 
-    long index = hash(key) % map->capacity; // Calcular la posición del par en la tabla hash
+    long index = hash(key, map->capacity) % map->capacity; // Calcular la posición del par en la tabla hash
     int i = 0;
     while (i < map->capacity) {
         Pair * bucket = map->buckets[index];
