@@ -88,17 +88,27 @@ HashMap * createMap(long capacity) {
 }
 
 void eraseMap(HashMap * map,  char * key) {    
+  if (map == NULL || key == NULL) {
+    return;
+  }
+  
+  if (map->size == map->capacity) {
+    return; 
+  }
 
+  Pair* elemAMarcar = searchMap(map, key);
 
+  elemAMarcar->key = NULL;
+  map->size--;
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
-if (map == NULL || key == NULL) {
-        return NULL;
-    }
-    if (map->size == map->capacity) {
-        return NULL; 
-    }
+  if (map == NULL || key == NULL) {
+          return NULL;
+      }
+      if (map->size == map->capacity) {
+          return NULL; 
+      }
 
     long indice = hash(key, map->capacity); 
     int i = 0;
