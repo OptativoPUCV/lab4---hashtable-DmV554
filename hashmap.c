@@ -91,10 +91,6 @@ void eraseMap(HashMap * map,  char * key) {
   if (map == NULL || key == NULL) {
     return;
   }
-  
-  if (map->size == map->capacity) {
-    return; 
-  }
 
   Pair* elemAMarcar = searchMap(map, key);
   if(elemAMarcar == NULL) return;
