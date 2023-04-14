@@ -97,7 +97,6 @@ void eraseMap(HashMap * map,  char * key) {
   }
 
   Pair* elemAMarcar = searchMap(map, key);
-
   if(elemAMarcar == NULL) return;
 
   elemAMarcar->key = NULL;
@@ -107,9 +106,6 @@ void eraseMap(HashMap * map,  char * key) {
 Pair * searchMap(HashMap * map,  char * key) {   
   if (map == NULL || key == NULL) {
           return NULL;
-      }
-      if (map->size == map->capacity) {
-          return NULL; 
       }
 
     long indice = hash(key, map->capacity); 
