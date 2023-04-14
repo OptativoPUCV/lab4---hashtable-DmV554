@@ -52,7 +52,7 @@ void insertMap(HashMap * map, char * key, void * value) {
     int i = 0;
     while (i < map->capacity) {
         Pair *bucket = map->buckets[indice];
-        if (bucket == NULL || bucket->key == NULL) { 
+        if (bucket == NULL) { 
             break;
         } else if (strcmp(bucket->key, key) == 0) { 
             return;
