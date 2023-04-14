@@ -84,3 +84,20 @@ In file included from test.c:3:
 cc1: all warnings being treated as errors
 Compilation failed
 d7ca670
+Fri 14 Apr 2023 10:42:16 PM UTC: 
+ hashmap.c | 1 +
+ 1 file changed, 1 insertion(+)
+In file included from test.c:4:
+In function ‘insertMap’,
+    inlined from ‘insertMap’ at hashmap.c:42:6:
+hashmap.c:48:51: error: argument 1 null where non-null expected [-Werror=nonnull]
+   48 |     while (map->buckets[posicion]->key != NULL || strcmp(map->buckets[posicion]->key, key) != 0) {
+      |                                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from test.c:3:
+hashmap.c: In function ‘insertMap’:
+/nix/store/4pqv2mwdn88h7xvsm7a5zplrd8sxzvw0-glibc-2.35-163-dev/include/string.h:156:12: note: in a call to function ‘strcmp’ declared ‘nonnull’
+  156 | extern int strcmp (const char *__s1, const char *__s2)
+      |            ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+12eb27b
