@@ -57,7 +57,7 @@ void insertMap(HashMap * map, char * key, void * value) {
         } else if (strcmp(bucket->key, key) == 0) { 
             return;
         } else { 
-            index = (index + 1);
+            index = (index + 1) % map->capacity;
             i++;
         }
     }
