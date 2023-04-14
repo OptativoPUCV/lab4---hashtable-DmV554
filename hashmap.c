@@ -42,27 +42,26 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value) {
 
    if (map == NULL || key == NULL) {
-        return; // Verificar que la tabla y la clave no sean nulas
+        return; // 
     }
     if (map->size == map->capacity) {
-        return; // Verificar que la tabla no esté llena
+        return; 
     }
 
-    long index = hash(key, map->capacity) % map->capacity; // Calcular la posición del par en la tabla hash
+    long index = hash(key, map->capacity) % map->capacity; 
     int i = 0;
     while (i < map->capacity) {
         Pair * bucket = map->buckets[index];
-        if (bucket == NULL || bucket->key == NULL) { // Encontrar un bucket vacío
+        if (bucket == NULL || bucket->key == NULL) { 
             break;
-        } else if (strcmp(bucket->key, key) == 0) { // Verificar que la clave no se repita
+        } else if (strcmp(bucket->key, key) == 0) { 
             return;
-        } else { // Resolver colisión linealmente
+        } else { 
             index = (index + 1) % map->capacity;
             i++;
         }
     }
 
-    // Insertar el nuevo par en la posición encontrada
     Pair * newPair = malloc(sizeof(Pair));
     newPair->key = key;
     newPair->value = value;
