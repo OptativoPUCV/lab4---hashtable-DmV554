@@ -137,11 +137,15 @@ Pair * firstMap(HashMap * map) {
         }
     }
 
-  
     return NULL;
 }
 
 Pair * nextMap(HashMap * map) {
-
+ if (map == NULL) {
     return NULL;
+  }
+
+  long indiceCurrent = map->current;
+  
+    return map->buckets[indiceCurrent+1];
 }
