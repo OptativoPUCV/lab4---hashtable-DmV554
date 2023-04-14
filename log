@@ -101,3 +101,14 @@ hashmap.c: In function ‘insertMap’:
 cc1: all warnings being treated as errors
 Compilation failed
 12eb27b
+Fri 14 Apr 2023 10:48:07 PM UTC: 
+ hashmap.c | 39 ++++++++++++++++++++++++++-------------
+ 1 file changed, 26 insertions(+), 13 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:61:13: error: implicit declaration of function ‘resize’ [-Werror=implicit-function-declaration]
+   61 |             resize(map);
+      |             ^~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+f58c6fe
