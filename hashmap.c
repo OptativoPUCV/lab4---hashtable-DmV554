@@ -42,7 +42,7 @@ int is_equal(void* key1, void* key2){
 void insertMap(HashMap * map, char * key, void * value) {
 
    if (map == NULL || key == NULL) {
-        return; // 
+        return;
     }
     if (map->size == map->capacity) {
         return; 
@@ -51,10 +51,10 @@ void insertMap(HashMap * map, char * key, void * value) {
     long indice = hash(key, map->capacity); 
     int i = 0;
     while (i < map->capacity) {
-        Pair *bucket = map->buckets[indice];
-        if (bucket == NULL) { 
+        Pair *elemTabla = map->buckets[indice];
+        if (elemTabla == NULL) { 
             break;
-        } else if (strcmp(bucket->key, key) == 0) { 
+        } else if (strcmp(elemTabla->key, key) == 0) { 
             return;
         } else { 
             indice = (indice + 1) % map->capacity;
@@ -62,10 +62,10 @@ void insertMap(HashMap * map, char * key, void * value) {
         }
     }
 
-    Pair * newPair = malloc(sizeof(Pair));
-    newPair->key = key;
-    newPair->value = value;
-    map->buckets[indice] = newPair;
+    Pair * elementoAInsertar = malloc(sizeof(Pair));
+    elementoAInsertar->key = key;
+    elementoAInsertar->value = value;
+    map->buckets[indice] = elementoAInsertar;
     map->size++;
     map->current = indice;
 
