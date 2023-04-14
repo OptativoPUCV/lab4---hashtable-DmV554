@@ -93,9 +93,31 @@ void eraseMap(HashMap * map,  char * key) {
 }
 
 Pair * searchMap(HashMap * map,  char * key) {   
+if (map == NULL || key == NULL) {
+        return NULL;
+    }
+    if (map->size == map->capacity) {
+        return NULL; 
+    }
 
+    long indice = hash(key, map->capacity); 
+    int i = 0;
+    while (i < map->capacity) {
+        Pair *elemTabla = map->buckets[indice];
+        if (elemTabla == NULL) { 
+            return NULL;
+        } else if (strcmp(elemTabla->key, key) == 0) { 
+            break;
+        } else { 
+            indice = (indice + 1) % map->capacity;
+            i++;
+        }
+    }
 
-    return NULL;
+    Pair * elementoBuscado = map->buckets[indice];
+    map->current = indice;
+
+    return elementoBuscado;
 }
 
 Pair * firstMap(HashMap * map) {

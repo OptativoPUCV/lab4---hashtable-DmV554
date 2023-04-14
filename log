@@ -180,3 +180,9 @@ Fri 14 Apr 2023 11:20:08 PM UTC:
  tests:  5|4
 total_score: 30/70
 6e2cce4
+Fri 14 Apr 2023 11:24:39 PM UTC: 
+ hashmap.c | 24 +++++++++++++++++++++++-
+ 1 file changed, 23 insertions(+), 1 deletion(-)
+ tests:  8|3
+total_score: 40/70
+753ea33
