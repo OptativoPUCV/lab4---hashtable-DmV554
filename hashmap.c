@@ -44,9 +44,7 @@ void insertMap(HashMap * map, char * key, void * value) {
    if (map == NULL || key == NULL) {
         return;
     }
-    if (map->size == map->capacity) {
-        return; 
-    }
+   
 
     long indice = hash(key, map->capacity); 
     int i = 0;
