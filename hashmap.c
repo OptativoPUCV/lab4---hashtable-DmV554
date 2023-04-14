@@ -125,7 +125,19 @@ Pair * searchMap(HashMap * map,  char * key) {
 }
 
 Pair * firstMap(HashMap * map) {
+  if (map == NULL) {
+    return NULL;
+  }
 
+   for (int i = 0; i < map->capacity; i++) {
+        Pair * elemPair = map->buckets[i];
+        if (elemPair != NULL && elemPair->key != NULL) {
+            map->current = i;
+            return elemPair;
+        }
+    }
+
+  
     return NULL;
 }
 
