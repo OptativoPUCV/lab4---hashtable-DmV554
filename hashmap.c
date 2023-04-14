@@ -114,10 +114,10 @@ if (map == NULL || key == NULL) {
         }
     }
 
-   // Pair * elementoBuscado = map->buckets[indice];
+    Pair * elementoBuscado = map->buckets[indice];
     map->current = indice;
 
-    return elemTabla;
+    return elementoBuscado;
 }
 
 Pair * firstMap(HashMap * map) {
