@@ -125,3 +125,16 @@ hashmap.c:26:6: note: declared here
       |      ^~~~
 Compilation failed
 aacc7c9
+Fri 14 Apr 2023 10:49:07 PM UTC: 
+ hashmap.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:18: error: too few arguments to function ‘hash’
+   51 |     long index = hash(key) % map->capacity; // Calcular la posición del par en la tabla hash
+      |                  ^~~~
+hashmap.c:26:6: note: declared here
+   26 | long hash( char * key, long capacity) {
+      |      ^~~~
+Compilation failed
+7c2eba1
