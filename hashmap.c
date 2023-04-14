@@ -48,7 +48,7 @@ void insertMap(HashMap * map, char * key, void * value) {
         return; 
     }
 
-    long index = hash(key, map->capacity) % map->capacity; 
+    long index = hash(key, map->capacity); 
     int i = 0;
     while (i < map->capacity) {
         Pair * bucket = map->buckets[index];
@@ -57,7 +57,7 @@ void insertMap(HashMap * map, char * key, void * value) {
         } else if (strcmp(bucket->key, key) == 0) { 
             return;
         } else { 
-            index = (index + 1) % map->capacity;
+            index = (index + 1);
             i++;
         }
     }
