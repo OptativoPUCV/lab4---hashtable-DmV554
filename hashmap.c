@@ -40,35 +40,37 @@ int is_equal(void* key1, void* key2){
 
 
 void insertMap(HashMap * map, char * key, void * value) {
-    long pos = hash(key, map->capacity);
-    Pair ** buckets = map->buckets;
-    int i = 0;
-    // Buscamos una casilla disponible
-    while (buckets[pos] != NULL && buckets[pos]->key != NULL && strcmp(buckets[pos]->key, key) != 0 && i < map->capacity) {
-        pos = (pos + 1) % map->capacity;
-        i++;
-    }
-    // Si la casilla ya existe, actualizamos su valor
-    if (buckets[pos] != NULL && strcmp(buckets[pos]->key, key) == 0) {
-        buckets[pos]->value = value;
-    } else {
-        // Si encontramos una casilla disponible, insertamos el nuevo par
-        if (buckets[pos] == NULL || buckets[pos]->key == NULL) {
-            buckets[pos] = malloc(sizeof(Pair));
-            buckets[pos]->key = key;
-            map->size++;
-        } else { // Si llegamos al límite de resolución de colisiones sin encontrar una casilla disponible, redimensionamos la tabla
-            resize(map);
-            insertMap(map, key, value);
-            return;
-        }
-        // Actualizamos el valor del par
-        buckets[pos]->value = value;
-        // Actualizamos el índice current
-        map->current = pos;
-    }
-}
 
+   if (map == NULL || key == NULL) {
+        return; // Verificar que la tabla y la clave no sean nulas
+    }
+    if (map->size == map->capacity) {
+        return; // Verificar que la tabla no esté llena
+    }
+
+    int index = hash(key) % map->capacity; // Calcular la posición del par en la tabla hash
+    int i = 0;
+    while (i < map->capacity) {
+        Pair * bucket = map->buckets[index];
+        if (bucket == NULL || bucket->key == NULL) { // Encontrar un bucket vacío
+            break;
+        } else if (strcmp(bucket->key, key) == 0) { // Verificar que la clave no se repita
+            return;
+        } else { // Resolver colisión linealmente
+            index = (index + 1) % map->capacity;
+            i++;
+        }
+    }
+
+    // Insertar el nuevo par en la posición encontrada
+    Pair * newPair = malloc(sizeof(Pair));
+    newPair->key = key;
+    newPair->value = value;
+    map->buckets[index] = newPair;
+    map->size++;
+    map->current = index;
+
+}
 
 void enlarge(HashMap * map) {
     enlarge_called = 1; //no borrar (testing purposes)

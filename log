@@ -112,3 +112,16 @@ hashmap.c:61:13: error: implicit declaration of function ‘resize’ [-Werror=i
 cc1: all warnings being treated as errors
 Compilation failed
 f58c6fe
+Fri 14 Apr 2023 10:48:56 PM UTC: 
+ hashmap.c | 50 ++++++++++++++++++++++++++------------------------
+ 1 file changed, 26 insertions(+), 24 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:51:17: error: too few arguments to function ‘hash’
+   51 |     int index = hash(key) % map->capacity; // Calcular la posición del par en la tabla hash
+      |                 ^~~~
+hashmap.c:26:6: note: declared here
+   26 | long hash( char * key, long capacity) {
+      |      ^~~~
+Compilation failed
+aacc7c9
